@@ -1,5 +1,5 @@
-# Git Template
-Custom Github Template
+# WP Conditional Logic
+Simple WordPress Library To Evaluate / Handle Conditional Logic.
 
 [![Latest Stable Version](https://poser.pugx.org/varunsridharan/wp-conditional-logic/version)](https://packagist.org/packages/varunsridharan/wp-conditional-logic)
 [![Latest Unstable Version](https://poser.pugx.org/varunsridharan/wp-conditional-logic/v/unstable)](https://packagist.org/packages/varunsridharan/wp-conditional-logic)
@@ -49,7 +49,7 @@ This project is licensed under **General Public License v3.0 license**. See the 
 
 ## Copyright
 
-2017 - 2018 Josantonius, [varunsridharan.in](https://varunsridharan.in/)
+2017 - 2019 Varun Sridharan, [varunsridharan.in](https://varunsridharan.in/)
 
 If you find it useful, let me know :wink:
 
