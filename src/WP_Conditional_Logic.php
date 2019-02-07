@@ -12,14 +12,14 @@
 
 namespace Varunsridharan\WordPress;
 
-use Varunsridharan\WordPress\WP_Conditional_Logic\Common_Is_Functions;
-use Varunsridharan\WordPress\WP_Conditional_Logic\Post;
+use Varunsridharan\WordPress\WP_Conditional_Logic\Hooks;
 
 if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 	require_once __DIR__ . '/class-compare-helper.php';
 	require_once __DIR__ . '/wp/class-users.php';
 	require_once __DIR__ . '/wp/class-common-is-functions.php';
 	require_once __DIR__ . '/wp/class-post.php';
+	require_once __DIR__ . '/wp/class-hooks.php';
 
 	/**
 	 * Class WP_Conditional_Logic
@@ -27,7 +27,7 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 	 * @author Varun Sridharan <varunsridharan23@gmail.com>
 	 * @since 1.0
 	 */
-	class WP_Conditional_Logic extends Post {
+	class WP_Conditional_Logic extends Hooks {
 		/**
 		 * WP_Conditional_Logic constructor.
 		 *
@@ -142,12 +142,17 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 				}
 			}
 
-			$conditon = array(
-				'logic'    => $conditon[0],
-				'operator' => $conditon[1],
-				'value'    => $conditon[2],
-				'extra'    => isset( $conditon[3] ) ? $conditon[3] : null,
-			);
+			$extra_condition      = $conditon;
+			$conditon['logic']    = $conditon[0];
+			$conditon['operator'] = $conditon[1];
+			$conditon['value']    = $conditon[2];
+			unset( $conditon[0] );
+			unset( $conditon[1] );
+			unset( $conditon[2] );
+			unset( $extra_condition[0] );
+			unset( $extra_condition[1] );
+			unset( $extra_condition[2] );
+			$conditon['extra'] = $extra_condition;
 
 			if ( method_exists( __CLASS__, $conditon['logic'] ) ) {
 				return self::{$conditon['logic']}( $conditon );

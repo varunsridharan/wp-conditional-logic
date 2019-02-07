@@ -25,7 +25,7 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Compare_Hel
 		 * @param $condition
 		 *
 		 * @static
-		 * @return bool
+		 * @return bool|array
 		 */
 		public static function get_extra_arg( $condition ) {
 			return ( isset( $condition['extra'] ) ) ? $condition['extra'] : null;
@@ -169,6 +169,21 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Compare_Hel
 		 */
 		public static function is_string_contains( $system_value, $user_value ) {
 			return ( false !== strpos( $system_value, $user_value ) );
+		}
+
+		/**
+		 * @param $function
+		 * @param $args
+		 *
+		 * @static
+		 * @return mixed
+		 */
+		public static function call_func( $function, $args ) {
+			$extra = self::get_extra_arg( $args );
+			if ( is_array( $extra ) ) {
+				return call_user_func_array( $function, $extra );
+			}
+			return call_user_func( $function, $extra );
 		}
 	}
 }
