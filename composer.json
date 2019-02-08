@@ -1,5 +1,5 @@
 {
-  "name"        : "wp-conditional-logic",
+  "name"        : "varunsridharan/wp-conditional-logic",
   "description" : "Simple WordPress Library To Evaluate / Handle Conditional Logic.",
   "support"     : {
 	"email"  : "varunsridharan23@gmail.com",

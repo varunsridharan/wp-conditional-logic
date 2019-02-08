@@ -19,11 +19,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Users' ) ) {
 		 *
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return int
 		 */
-		public static function user_id( $condition = array() ) {
-			return self::compare_return( $condition, get_current_user_id() );
+		public function user_id( $condition = array() ) {
+			return $this->compare_return( $condition, get_current_user_id() );
 		}
 
 		/**
@@ -31,13 +30,12 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Users' ) ) {
 		 *
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function user_can( $condition = array() ) {
-			$sys_val = current_user_can( $condition['value'], self::get_extra_arg( $condition ) );
+		public function user_can( $condition = array() ) {
+			$sys_val = current_user_can( $condition['value'], $this->get_extra_arg( $condition ) );
 			$sys_val = ( true === $sys_val ) ? $condition['value'] : false;
-			return self::compare_return( $condition, $sys_val );
+			return $this->compare_return( $condition, $sys_val );
 		}
 
 		/**
@@ -45,12 +43,11 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Users' ) ) {
 		 *
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function user_meta( $condition = array() ) {
-			$meta = get_user_meta( get_current_user_id(), self::get_extra_arg( $condition ), true );
-			return self::compare_return( $condition, $meta );
+		public function user_meta( $condition = array() ) {
+			$meta = get_user_meta( get_current_user_id(), $this->get_extra_arg( $condition ), true );
+			return $this->compare_return( $condition, $meta );
 		}
 
 		/**
@@ -60,11 +57,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Users' ) ) {
 		 *
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function user_logged_in( $condition = array() ) {
-			return self::compare_return( $condition, is_user_logged_in() );
+		public function user_logged_in( $condition = array() ) {
+			return $this->compare_return( $condition, is_user_logged_in() );
 		}
 	}
 }

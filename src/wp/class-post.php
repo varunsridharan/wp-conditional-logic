@@ -20,11 +20,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 		 *
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function post_id( $condition = array() ) {
-			return self::compare_return( $condition, get_the_ID() );
+		public function post_id( $condition = array() ) {
+			return $this->compare_return( $condition, get_the_ID() );
 		}
 
 		/**
@@ -32,11 +31,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 		 *
 		 * @param $compare
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function post_type( $compare ) {
-			return self::compare_return( $compare, get_post_type() );
+		public function post_type( $compare ) {
+			return $this->compare_return( $compare, get_post_type() );
 		}
 
 		/**
@@ -44,11 +42,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 		 *
 		 * @param $compare
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function post_title( $compare ) {
-			return self::compare_return( $compare, get_the_title() );
+		public function post_title( $compare ) {
+			return $this->compare_return( $compare, get_the_title() );
 		}
 
 		/**
@@ -56,13 +53,12 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 		 *
 		 * @param $compare
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function post_name( $compare ) {
+		public function post_name( $compare ) {
 			global $post;
 			if ( $post instanceof \WP_Post ) {
-				return self::compare_return( $compare, $post->post_name );
+				return $this->compare_return( $compare, $post->post_name );
 			}
 			return false;
 		}
@@ -72,11 +68,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 		 *
 		 * @param $compare
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function post_content( $compare ) {
-			return self::compare_return( $compare, get_the_content() );
+		public function post_content( $compare ) {
+			return $this->compare_return( $compare, get_the_content() );
 		}
 
 		/**
@@ -88,11 +83,10 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 		 *
 		 * @param $compare
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function post_terms( $compare ) {
-			$extra    = self::get_extra_arg( $compare );
+		public function post_terms( $compare ) {
+			$extra    = $this->get_extra_arg( $compare );
 			$taxonomy = $extra;
 			$exarg    = array();
 			$sysval   = null;
@@ -116,7 +110,7 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Post' ) ) {
 				$data = wp_list_pluck( $data, 'term_id' );
 			}
 
-			return self::compare_return( $compare, $data );
+			return $this->compare_return( $compare, $data );
 		}
 	}
 }

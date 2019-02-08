@@ -30,6 +30,14 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 	 */
 	class WP_Conditional_Logic extends Admin {
 		/**
+		 * Stores List of Conditions.
+		 *
+		 * @var null
+		 * @access
+		 */
+		private $condition = null;
+
+		/**
 		 * WP_Conditional_Logic constructor.
 		 *
 		 * @param array $conditions
@@ -60,6 +68,42 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 		 * );
 		 */
 		public function __construct( $conditions = array() ) {
+			$this->condition = $conditions;
+		}
+
+		/**
+		 * Returns A New Instance.
+		 *
+		 * @param array $conditions
+		 *
+		 * @return \Varunsridharan\WordPress\WP_Conditional_Logic
+		 */
+		public static function init( $conditions = array() ) {
+			return new self( $conditions );
+		}
+
+		/**
+		 * Runs An Instance.
+		 *
+		 * @return bool|mixed
+		 */
+		public function run() {
+			if ( isset( $this->condition[0] ) && is_string( $this->condition[0] ) ) {
+				return $this->eval_single( $this->condition );
+			} elseif ( isset( $this->condition[0] ) && is_array( $this->condition[0] ) ) {
+				if ( is_array( $this->condition[0][0] ) ) {
+					foreach ( $this->condition as $conditions ) {
+						if ( is_array( $conditions ) && ! empty( $conditions ) ) {
+							if ( true === $this->eval_group( $conditions ) ) {
+								return true;
+							}
+						}
+					}
+				} else {
+					return $this->eval_group( $this->condition );
+				}
+			}
+			return false;
 		}
 
 		/**
@@ -67,14 +111,13 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 		 *
 		 * @param $conditions
 		 *
-		 * @static
 		 * @return bool
 		 */
-		public static function eval_group_or( $conditions ) {
+		public function eval_group_or( $conditions ) {
 			if ( is_array( $conditions ) && ! empty( $conditions ) ) {
 				foreach ( $conditions as $condition ) {
 					if ( is_array( $condition ) ) {
-						if ( true === self::eval_single( $condition ) ) {
+						if ( true === $this->eval_single( $condition ) ) {
 							return true;
 						}
 					}
@@ -86,19 +129,18 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 		/**
 		 * @param $conditions
 		 *
-		 * @static
 		 * @return bool
 		 */
-		public static function eval_group( $conditions ) {
+		public function eval_group( $conditions ) {
 			if ( is_array( $conditions ) && ! empty( $conditions ) ) {
 				foreach ( $conditions as $condition ) {
 					if ( is_array( $condition ) ) {
 						if ( is_array( $condition[0] ) ) {
-							if ( false === self::eval_group_or( $condition ) ) {
+							if ( false === $this->eval_group_or( $condition ) ) {
 								return false;
 							}
 						} else {
-							if ( false === self::eval_single( $condition ) ) {
+							if ( false === $this->eval_single( $condition ) ) {
 								return false;
 							}
 						}
@@ -114,21 +156,13 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 		 * @param array $conditon
 		 *
 		 * @example
-		 * array(
-		 *  // Below 2 Conditions are With AND.
-		 *  array( 'post_type', '=', 'product' ),
-		 *  array( 'user_id', '=', '3' ),
-		 *  // Below Is A OR Condition (Any of the 1 condition should be successful
-		 *  array(
-		 *      array( 'user_can', '=', 'admin_rights' ),
-		 *      array( 'user_meta', '=', 'true', '_meta_key' ),
-		 *  ),
-		 * );
+		 *  array( 'post_type', '=', 'product' );
+		 *  or
+		 *  array( 'user_id', '=', '3' );
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function eval_single( $conditon ) {
+		public function eval_single( $conditon ) {
 			if ( count( $conditon ) === 1 ) {
 				$conditon[1] = '==';
 				$conditon[2] = true;

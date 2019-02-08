@@ -18,10 +18,9 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Hooks' ) ) {
 		/**
 		 * @param $condition
 		 *
-		 * @static
 		 * @return mixed
 		 */
-		private static function hook_fix_arg( $condition ) {
+		private function hook_fix_arg( $condition ) {
 			if ( empty( $condition['extra'] ) && ! empty( $condition['value'] ) ) {
 				$condition['extra'] = $condition['value'];
 				$condition['value'] = true;
@@ -32,40 +31,37 @@ if ( ! class_exists( 'Varunsridharan\WordPress\WP_Conditional_Logic\Hooks' ) ) {
 		/**
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function did_action( $condition = array() ) {
-			$condition = self::hook_fix_arg( $condition );
-			$sys_val   = self::call_func( 'has_action', $condition );
+		public function did_action( $condition = array() ) {
+			$condition = $this->hook_fix_arg( $condition );
+			$sys_val   = $this->call_func( 'has_action', $condition );
 			$sys_val   = ( true === $condition['value'] && 1 === $sys_val ) ? true : $sys_val;
-			return self::compare_return( $condition, $sys_val );
+			return $this->compare_return( $condition, $sys_val );
 		}
 
 		/**
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function has_action( $condition = array() ) {
-			$condition = self::hook_fix_arg( $condition );
-			$sys_val   = self::call_func( 'has_action', $condition );
+		public function has_action( $condition = array() ) {
+			$condition = $this->hook_fix_arg( $condition );
+			$sys_val   = $this->call_func( 'has_action', $condition );
 			$sys_val   = ( true === $condition['value'] && false !== $sys_val ) ? true : $sys_val;
-			return self::compare_return( $condition, $sys_val );
+			return $this->compare_return( $condition, $sys_val );
 		}
 
 		/**
 		 * @param array $condition
 		 *
-		 * @static
 		 * @return bool|mixed
 		 */
-		public static function has_filter( $condition = array() ) {
-			$condition = self::hook_fix_arg( $condition );
-			$sys_val   = self::call_func( 'has_filter', $condition );
+		public function has_filter( $condition = array() ) {
+			$condition = $this->hook_fix_arg( $condition );
+			$sys_val   = $this->call_func( 'has_filter', $condition );
 			$sys_val   = ( true === $condition['value'] && false !== $sys_val ) ? true : $sys_val;
-			return self::compare_return( $condition, $sys_val );
+			return $this->compare_return( $condition, $sys_val );
 		}
 	}
 }
