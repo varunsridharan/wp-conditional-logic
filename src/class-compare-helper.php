@@ -84,6 +84,11 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Compare_Hel
 				case 'contains':
 					return 'is_string_contains';
 					break;
+
+				case 'in':
+				case 'inor':
+					return ( 'inor' === $compare_logic ) ? 'is_array_in_or' : 'is_array_in';
+					break;
 			}
 			return $compare_logic;
 		}
@@ -169,6 +174,47 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Compare_Hel
 		 */
 		public static function is_string_contains( $system_value, $user_value ) {
 			return ( false !== strpos( $system_value, $user_value ) );
+		}
+
+		/**
+		 * @param      $system_value
+		 * @param      $user_value
+		 * @param bool $is_or
+		 *
+		 * @static
+		 * @return bool
+		 */
+		public static function is_array_in( $system_value, $user_value, $is_or = false ) {
+			$system_value = ( ! is_array( $system_value ) ) ? array( $system_value ) : $system_value;
+			$user_value   = ( ! is_array( $user_value ) ) ? array( $user_value ) : $user_value;
+			$return       = 0;
+			foreach ( $user_value as $user_val ) {
+				if ( isset( $system_value[ $user_val ] ) ) {
+					$return++;
+					if ( true === $is_or ) {
+						return true;
+					}
+				} else {
+					if ( in_array( $user_val, $system_value ) ) {
+						$return++;
+						if ( true === $is_or ) {
+							return true;
+						}
+					}
+				}
+			}
+			return ( 0 > $return ) ? true : false;
+		}
+
+		/**
+		 * @param $system_value
+		 * @param $user_value
+		 *
+		 * @static
+		 * @return bool
+		 */
+		public static function is_array_in_or( $system_value, $user_value ) {
+			return self::is_array_in( $system_value, $user_value, true );
 		}
 
 		/**
