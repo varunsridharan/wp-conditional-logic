@@ -12,7 +12,7 @@
 
 namespace Varunsridharan\WordPress;
 
-use Varunsridharan\WordPress\WP_Conditional_Logic\Hooks;
+use Varunsridharan\WordPress\WP_Conditional_Logic\Admin;
 
 if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 	require_once __DIR__ . '/class-compare-helper.php';
@@ -20,6 +20,7 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 	require_once __DIR__ . '/wp/class-common-is-functions.php';
 	require_once __DIR__ . '/wp/class-post.php';
 	require_once __DIR__ . '/wp/class-hooks.php';
+	require_once __DIR__ . '/wp/class-admin.php';
 
 	/**
 	 * Class WP_Conditional_Logic
@@ -27,7 +28,7 @@ if ( ! class_exists( 'WP_Conditional_Logic' ) ) {
 	 * @author Varun Sridharan <varunsridharan23@gmail.com>
 	 * @since 1.0
 	 */
-	class WP_Conditional_Logic extends Hooks {
+	class WP_Conditional_Logic extends Admin {
 		/**
 		 * WP_Conditional_Logic constructor.
 		 *
