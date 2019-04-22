@@ -14,12 +14,14 @@ namespace Varunsridharan\WordPress\WP_Conditional_Logic;
 
 require_once __DIR__ . '/validator/trait-users.php';
 require_once __DIR__ . '/validator/trait-request.php';
+require_once __DIR__ . '/validator/trait-hooks.php';
 require_once __DIR__ . '/validator/trait-admin.php';
 require_once __DIR__ . '/class-compare.php';
 
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Requests;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Users;
+use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Hooks;
 
 /**
  * Class Validators
@@ -32,6 +34,7 @@ class Validators extends Compare {
 	use Requests;
 	use Users;
 	use Admin;
+	use Hooks;
 
 	/**
 	 * @var null
@@ -99,6 +102,23 @@ class Validators extends Compare {
 		}
 		if ( false !== $this->get_value( 'metakey' ) ) {
 			return $this->get_value( 'metakey' );
+		}
+		return false;
+	}
+
+	/**
+	 * Checks if given value is a bool.
+	 *
+	 * @param      $value
+	 * @param bool $is_true
+	 *
+	 * @return bool
+	 */
+	public function _is_bool( $value, $is_true = true ) {
+		if ( true === $is_true && ( true === $value || 'true' === $value ) ) {
+			return true;
+		} elseif ( false === $is_true && ( false === $value || 'false' === $value ) ) {
+			return true;
 		}
 		return false;
 	}
