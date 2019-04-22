@@ -21,6 +21,7 @@ require_once __DIR__ . '/class-compare.php';
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Requests;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Users;
+use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Post;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Hooks;
 
 /**
@@ -33,6 +34,7 @@ use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Hooks;
 class Validators extends Compare {
 	use Requests;
 	use Users;
+	use Post;
 	use Admin;
 	use Hooks;
 
