@@ -16,6 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+require_once __DIR__ . '/validator/trait-users.php';
+require_once __DIR__ . '/validator/trait-request.php';
+require_once __DIR__ . '/validator/trait-hooks.php';
+require_once __DIR__ . '/validator/trait-admin.php';
+require_once __DIR__ . '/validator/trait-post.php';
+require_once __DIR__ . '/class-compare.php';
+
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Requests;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Users;
@@ -23,12 +30,6 @@ use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Post;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Hooks;
 
 if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validators' ) ) {
-	require_once __DIR__ . '/validator/trait-users.php';
-	require_once __DIR__ . '/validator/trait-request.php';
-	require_once __DIR__ . '/validator/trait-hooks.php';
-	require_once __DIR__ . '/validator/trait-admin.php';
-	require_once __DIR__ . '/class-compare.php';
-
 	/**
 	 * Class Validators
 	 *
