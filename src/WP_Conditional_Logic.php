@@ -12,50 +12,56 @@
 
 namespace Varunsridharan\WordPress;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
+
 use Varunsridharan\WordPress\WP_Conditional_Logic\Builder;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Group;
 
-require_once __DIR__ . '/class-builder.php';
-require_once __DIR__ . '/class-validators.php';
-require_once __DIR__ . '/rules/class-group.php';
-require_once __DIR__ . '/rules/class-rule.php';
-
-/**
- * Class WP_Conditional_Logic
- *
- * @author Varun Sridharan <varunsridharan23@gmail.com>
- * @since 1.0
- */
-class WP_Conditional_Logic {
-	/**
-	 * @var array
-	 * @access
-	 */
-	protected $rules = array();
+if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic' ) ) {
+	require_once __DIR__ . '/class-builder.php';
+	require_once __DIR__ . '/class-validators.php';
+	require_once __DIR__ . '/rules/class-group.php';
+	require_once __DIR__ . '/rules/class-rule.php';
 
 	/**
-	 * @var array
-	 * @access
-	 */
-	protected $current = array();
-
-	/**
-	 * Returns A New Builder Instance.
+	 * Class WP_Conditional_Logic
 	 *
-	 * @static
-	 * @return \Varunsridharan\WordPress\WP_Conditional_Logic\Builder
+	 * @author Varun Sridharan <varunsridharan23@gmail.com>
+	 * @since 1.0
 	 */
-	public static function builder() {
-		return new Builder();
-	}
+	class WP_Conditional_Logic {
+		/**
+		 * @var array
+		 * @access
+		 */
+		protected $rules = array();
 
-	public static function run( $rules = array() ) {
-		if ( isset( $rules['valid'] ) && true === $rules['valid'] ) {
-			if ( isset( $rules['condition'] ) && isset( $rules['rules'] ) ) {
-				$rules = new Group( $rules );
-				var_dump( $rules->run() );
-			}
+		/**
+		 * @var array
+		 * @access
+		 */
+		protected $current = array();
+
+		/**
+		 * Returns A New Builder Instance.
+		 *
+		 * @static
+		 * @return \Varunsridharan\WordPress\WP_Conditional_Logic\Builder
+		 */
+		public static function builder() {
+			return new Builder();
 		}
-		return false;
+
+		public static function run( $rules = array() ) {
+			if ( isset( $rules['valid'] ) && true === $rules['valid'] ) {
+				if ( isset( $rules['condition'] ) && isset( $rules['rules'] ) ) {
+					$rules = new Group( $rules );
+					var_dump( $rules->run() );
+				}
+			}
+			return false;
+		}
 	}
 }

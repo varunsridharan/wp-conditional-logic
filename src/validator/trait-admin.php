@@ -16,37 +16,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-/**
- * Trait Admin
- *
- * @package Varunsridharan\WordPress\WP_Conditional_Logic\Validator
- * @author Varun Sridharan <varunsridharan23@gmail.com>
- * @since 1.0
- */
-trait Admin {
+if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin' ) ) {
 	/**
-	 * Returns Current Screen Object.
+	 * Trait Admin
 	 *
-	 * @return bool|\WP_Screen
+	 * @package Varunsridharan\WordPress\WP_Conditional_Logic\Validator
+	 * @author Varun Sridharan <varunsridharan23@gmail.com>
+	 * @since 1.0
 	 */
-	private function get_screen_object() {
-		if ( is_admin() && ( did_action( 'current_screen' ) || doing_action( 'current_screen' ) ) ) {
-			$screen = get_current_screen();
-			if ( $screen ) {
-				return $screen;
+	trait Admin {
+		/**
+		 * Returns Current Screen Object.
+		 *
+		 * @return bool|\WP_Screen
+		 */
+		private function get_screen_object() {
+			if ( is_admin() && ( did_action( 'current_screen' ) || doing_action( 'current_screen' ) ) ) {
+				$screen = get_current_screen();
+				if ( $screen ) {
+					return $screen;
+				}
 			}
+			return false;
 		}
-		return false;
-	}
 
-	/**
-	 * @return bool|mixed
-	 */
-	public function screen_id() {
-		if ( $this->get_screen_object() ) {
-			$screen = $this->get_screen_object();
-			return ( isset( $screen->id ) ) ? $screen->id : false;
+		/**
+		 * @return bool|mixed
+		 */
+		public function screen_id() {
+			if ( $this->get_screen_object() ) {
+				$screen = $this->get_screen_object();
+				return ( isset( $screen->id ) ) ? $screen->id : false;
+			}
+			return false;
 		}
-		return false;
 	}
 }
