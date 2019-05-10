@@ -59,13 +59,6 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\U
 		}
 
 		/**
-		 * @return mixed
-		 */
-		public function user_logged_in() {
-			return is_user_logged_in();
-		}
-
-		/**
 		 * @return array|bool
 		 */
 		public function user_role() {
