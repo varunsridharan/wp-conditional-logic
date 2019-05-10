@@ -209,11 +209,7 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Compare' ) 
 		 * @return mixed
 		 */
 		public function call_func( $function, $args ) {
-			$extra = array();
-			if ( is_array( $extra ) ) {
-				return call_user_func_array( $function, $extra );
-			}
-			return call_user_func( $function, $extra );
+			return ( is_array( $function ) ) ? call_user_func_array( $function, $args ) : call_user_func( $function, $args );
 		}
 	}
 }

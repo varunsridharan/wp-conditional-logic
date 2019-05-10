@@ -65,7 +65,7 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic' ) ) {
 			if ( isset( $rules['valid'] ) && true === $rules['valid'] ) {
 				if ( isset( $rules['condition'] ) && isset( $rules['rules'] ) ) {
 					$rules = new Group( $rules );
-					var_dump( $rules->run() );
+					return $rules->run();
 				}
 			}
 			return false;

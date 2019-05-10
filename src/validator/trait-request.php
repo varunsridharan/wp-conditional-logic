@@ -28,13 +28,6 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		/**
 		 * @return bool
 		 */
-		public function is_admin() {
-			return is_admin();
-		}
-
-		/**
-		 * @return bool
-		 */
 		public function is_ajax() {
 			return ( defined( 'DOING_AJAX' ) && true === DOING_AJAX );
 		}
@@ -68,64 +61,9 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		/**
 		 * @return bool
 		 */
-		public function is_404() {
-			return is_404();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_date() {
-			return is_date();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_year() {
-			return is_year();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_month() {
-			return is_month();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_day() {
-			return is_day();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_time() {
-			return is_time();
-		}
-
-		/**
-		 * @return int
-		 */
-		public function is_new_day() {
-			return is_new_day();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_multi_author() {
-			return is_multi_author();
-		}
-
-		/**
-		 * @return bool
-		 */
 		public function comments_open() {
-			return comments_open();
+			$value = ( true === $this->get_value() ) ? null : $this->get_value();
+			return comments_open( $value );
 		}
 
 		/**
@@ -152,43 +90,9 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		/**
 		 * @return bool
 		 */
-		public function is_network_admin() {
-			return is_network_admin();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_archive() {
-			return is_archive();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_search() {
-			return is_search();
-		}
-
-		/**
-		 * @return bool
-		 */
 		public function is_attachment() {
-			return is_attachment();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_front_page() {
-			return is_front_page();
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_home() {
-			return is_home();
+			$value = ( true === $this->get_value() ) ? null : $this->get_value();
+			return is_attachment( $value );
 		}
 
 		/**
@@ -203,14 +107,15 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		 * @return bool
 		 */
 		public function is_single_page() {
-			return is_single();
+			return $this->is_single();
 		}
 
 		/**
 		 * @return bool
 		 */
 		public function is_singular_page() {
-			return is_singular();
+			$value = ( true === $this->get_value() ) ? null : $this->get_value();
+			return is_singular( $value );
 		}
 
 		/**
@@ -225,15 +130,8 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		 * @return bool
 		 */
 		public function is_page() {
-			$value = ( true === $this->get_value() ) ? null : $this->get_value();
+			$value = ( true === $this->get_value() ) ? '' : $this->get_value();
 			return is_page( $value );
-		}
-
-		/**
-		 * @return bool
-		 */
-		public function is_paged() {
-			return is_paged();
 		}
 
 		/**
@@ -283,6 +181,22 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		public function has_term() {
 			$value = ( true === $this->get_value() ) ? null : $this->get_value();
 			return has_term( $value );
+		}
+
+		/**
+		 * @return bool
+		 */
+		public function is_taxonomy_hierarchical() {
+			$value = ( true === $this->get_value() ) ? null : $this->get_value();
+			return is_taxonomy_hierarchical( $value );
+		}
+
+		/**
+		 * @return bool
+		 */
+		public function has_excerpt() {
+			$value = ( true === $this->get_value() ) ? null : $this->get_value();
+			return has_excerpt( $value );
 		}
 	}
 }

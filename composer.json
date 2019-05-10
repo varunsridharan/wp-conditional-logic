@@ -15,7 +15,7 @@
 	"psr-4" : {
 	  "Varunsridharan\\WordPress\\" : "./src"
 	},
-	"files" : [ './src/functions.php' ]
+	"files" : [ "src/functions.php" ]
   },
   "authors"     : [
 	{

@@ -30,14 +30,12 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\A
 		 *
 		 * @return bool|\WP_Screen
 		 */
-		private function get_screen_object() {
+		protected function get_screen_object() {
+			$screen = false;
 			if ( is_admin() && ( did_action( 'current_screen' ) || doing_action( 'current_screen' ) ) ) {
 				$screen = get_current_screen();
-				if ( $screen ) {
-					return $screen;
-				}
 			}
-			return false;
+			return ( $screen && ! empty( $screen ) ) ? $screen : false;
 		}
 
 		/**

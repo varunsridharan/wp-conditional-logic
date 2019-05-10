@@ -63,25 +63,97 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule'
 		private $value = null;
 
 		/**
+		 * Stores Additonal Arguments.
+		 *
+		 * @var null
+		 * @access
+		 */
+		private $arguments = null;
+
+		/**
 		 * Rule constructor.
 		 *
 		 * @param array $rule
 		 */
 		public function __construct( $rule = array() ) {
-			$this->id       = ( isset( $rule['id'] ) ) ? $rule['id'] : false;
-			$this->field    = ( isset( $rule['field'] ) ) ? $rule['field'] : false;
-			$this->type     = ( isset( $rule['type'] ) ) ? $rule['type'] : false;
-			$this->operator = ( isset( $rule['operator'] ) ) ? $rule['operator'] : false;
-			$this->input    = ( isset( $rule['input'] ) ) ? $rule['input'] : false;
-			$this->value    = ( isset( $rule['value'] ) ) ? $rule['value'] : false;
+			$this->id        = ( isset( $rule['id'] ) ) ? $rule['id'] : false;
+			$this->field     = ( isset( $rule['field'] ) ) ? $rule['field'] : false;
+			$this->type      = ( isset( $rule['type'] ) ) ? $rule['type'] : false;
+			$this->operator  = ( isset( $rule['operator'] ) ) ? $rule['operator'] : false;
+			$this->input     = ( isset( $rule['input'] ) ) ? $rule['input'] : false;
+			$this->value     = ( isset( $rule['value'] ) ) ? $rule['value'] : false;
+			$this->arguments = ( isset( $rule['extra_arguments'] ) ) ? $rule['extra_arguments'] : false;
 		}
 
 		/**
 		 * @return bool|mixed|void
 		 */
 		public function run() {
-			$validator = new Validators( $this->id, $this->value, $this->operator );
+			$validator = new Validators( $this );
 			return $validator->run();
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function id() {
+			return $this->id;
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function value() {
+			return $this->value;
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function operator() {
+			return $this->operator;
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function type() {
+			return $this->type;
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function field() {
+			return $this->field;
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function input() {
+			return $this->input;
+		}
+
+		/**
+		 * Custom Getter Method.
+		 *
+		 * @return bool|mixed|null
+		 */
+		public function arguments() {
+			return $this->arguments;
 		}
 	}
 }

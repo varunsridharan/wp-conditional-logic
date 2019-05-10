@@ -21,10 +21,13 @@ require_once __DIR__ . '/validator/trait-request.php';
 require_once __DIR__ . '/validator/trait-hooks.php';
 require_once __DIR__ . '/validator/trait-admin.php';
 require_once __DIR__ . '/validator/trait-post.php';
+require_once __DIR__ . '/validator/trait-theme.php';
 require_once __DIR__ . '/class-compare.php';
 
+use Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Requests;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin;
+use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Theme;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Users;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Post;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Hooks;
@@ -43,36 +46,23 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validators'
 		use Post;
 		use Admin;
 		use Hooks;
+		use Theme;
 
 		/**
-		 * @var null
+		 * Stores Rule's Instance.
+		 *
+		 * @var \Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule
 		 * @access
 		 */
-		private $system_rule = null;
-
-		/**
-		 * @var null
-		 * @access
-		 */
-		private $user_value = null;
-
-		/**
-		 * @var string|null
-		 * @access
-		 */
-		private $compare = null;
+		protected $rule = null;
 
 		/**
 		 * Validators constructor.
 		 *
-		 * @param null   $system_rule
-		 * @param null   $user_value
-		 * @param string $compare
+		 * @param \Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule $instance
 		 */
-		public function __construct( $system_rule = null, $user_value = null, $compare = '=' ) {
-			$this->system_rule = $system_rule;
-			$this->user_value  = $user_value;
-			$this->compare     = $compare;
+		public function __construct( Rule &$instance ) {
+			$this->rule = $instance;
 		}
 
 		/**
@@ -81,16 +71,16 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validators'
 		 * @return mixed
 		 */
 		public function get_value( $key = false ) {
-			if ( ( is_array( $this->user_value ) || ! is_array( $this->user_value ) ) && false === $key ) {
-				return $this->user_value;
+			if ( ( is_array( $this->rule->value() ) || ! is_array( $this->rule->value() ) ) && false === $key ) {
+				return $this->rule->value();
 			}
 
 			if ( 'value' === $key ) {
-				return ( is_array( $this->user_value ) && isset( $this->user_value[ $key ] ) ) ? $this->user_value[ $key ] : $this->user_value;
+				return ( is_array( $this->rule->value() ) && isset( $this->rule->value()[ $key ] ) ) ? $this->rule->value()[ $key ] : $this->rule->value();
 			}
 
-			if ( is_array( $this->user_value ) && isset( $this->user_value[ $key ] ) ) {
-				return $this->user_value[ $key ];
+			if ( is_array( $this->rule->value() ) && isset( $this->rule->value()[ $key ] ) ) {
+				return $this->rule->value()[ $key ];
 			}
 			return false;
 		}
@@ -137,12 +127,17 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validators'
 		 * @return bool|mixed|void
 		 */
 		public function run() {
-			if ( method_exists( __CLASS__, $this->system_rule ) ) {
-				$system_val = $this->{$this->system_rule}();
-			} elseif ( has_filter( 'wp_conditional_logic_' . $this->system_rule ) ) {
-				$system_val = apply_filters( 'wp_conditional_logic_' . $this->system_rule, false, $this->system_rule, $this->user_value, $this->compare );
+			$sys_rule   = $this->rule->id();
+			$system_val = null;
+
+			if ( method_exists( __CLASS__, $sys_rule ) ) {
+				$system_val = $this->{$sys_rule}();
+			} elseif ( function_exists( $sys_rule ) ) {
+				$system_val = call_user_func( $sys_rule );
+			} elseif ( has_filter( 'wp_conditional_logic_' . $sys_rule ) ) {
+				$system_val = apply_filters( 'wp_conditional_logic_' . $sys_rule, false, $sys_rule, $this->rule->value(), $this->rule->operator() );
 			}
-			return $this->compare_return( $this->compare, $system_val, $this->user_value );
+			return $this->compare_return( $this->rule->operator(), $system_val, $this->rule->value() );
 		}
 	}
 }

@@ -26,57 +26,57 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Builder' ) 
 	 * @author Varun Sridharan <varunsridharan23@gmail.com>
 	 * @since 1.0
 	 *
-	 * @method is_admin() $builder->is_admin( $value = "", $compare_operator = "" )
-	 * @method is_ajax() $builder->is_ajax( $value = "", $compare_operator = "" )
-	 * @method is_cron() $builder->is_cron( $value = "", $compare_operator = "" )
-	 * @method is_frontend() $builder->is_frontend( $value = "", $compare_operator = "" )
-	 * @method is_ajax_action() $builder->is_ajax_action( $value = "", $compare_operator = "" )
-	 * @method is_404() $builder->is_404( $value = "", $compare_operator = "" )
-	 * @method is_date() $builder->is_date( $value = "", $compare_operator = "" )
-	 * @method is_year() $builder->is_year( $value = "", $compare_operator = "" )
-	 * @method is_month() $builder->is_month( $value = "", $compare_operator = "" )
-	 * @method is_day() $builder->is_day( $value = "", $compare_operator = "" )
-	 * @method is_time() $builder->is_time( $value = "", $compare_operator = "" )
-	 * @method is_new_day() $builder->is_new_day( $value = "", $compare_operator = "" )
-	 * @method is_multi_author() $builder->is_multi_author( $value = "", $compare_operator = "" )
-	 * @method comments_open() $builder->comments_open( $value = "", $compare_operator = "" )
-	 * @method is_post_type_hierarchical() $builder->is_post_type_hierarchical( $value = "", $compare_operator = "" )
-	 * @method is_post_type_archive() $builder->is_post_type_archive( $value = "", $compare_operator = "" )
-	 * @method is_author() $builder->is_author( $value = "", $compare_operator = "" )
-	 * @method is_network_admin() $builder->is_network_admin( $value = "", $compare_operator = "" )
-	 * @method is_archive() $builder->is_archive( $value = "", $compare_operator = "" )
-	 * @method is_search() $builder->is_search( $value = "", $compare_operator = "" )
-	 * @method is_attachment() $builder->is_attachment( $value = "", $compare_operator = "" )
-	 * @method is_front_page() $builder->is_front_page( $value = "", $compare_operator = "" )
-	 * @method is_home() $builder->is_home( $value = "", $compare_operator = "" )
-	 * @method is_single() $builder->is_single( $value = "", $compare_operator = "" )
-	 * @method is_single_page() $builder->is_single_page( $value = "", $compare_operator = "" )
-	 * @method is_singular_page() $builder->is_singular_page( $value = "", $compare_operator = "" )
-	 * @method is_sticky() $builder->is_sticky( $value = "", $compare_operator = "" )
-	 * @method is_page() $builder->is_page( $value = "", $compare_operator = "" )
-	 * @method is_paged() $builder->is_paged( $value = "", $compare_operator = "" )
-	 * @method is_page_template() $builder->is_page_template( $value = "", $compare_operator = "" )
-	 * @method is_category() $builder->is_category( $value = "", $compare_operator = "" )
-	 * @method is_tag() $builder->is_tag( $value = "", $compare_operator = "" )
-	 * @method has_tag() $builder->has_tag( $value = "", $compare_operator = "" )
-	 * @method is_tax() $builder->is_tax( $value = "", $compare_operator = "" )
-	 * @method has_term() $builder->has_term( $value = "", $compare_operator = "" )
-	 * @method user_id() $builder->user_id( $value = "", $compare_operator = "" )
-	 * @method user_can() $builder->user_can( $value = "", $compare_operator = "" )
-	 * @method user_name() $builder->user_name( $value = "", $compare_operator = "" )
-	 * @method user_meta() $builder->user_meta( $value = "", $compare_operator = "" )
-	 * @method user_logged_in() $builder->user_logged_in( $value = "", $compare_operator = "" )
-	 * @method user_role() $builder->user_role( $value = "", $compare_operator = "" )
-	 * @method post_id() $builder->post_id( $value = "", $compare_operator = "" )
-	 * @method post_type() $builder->post_type( $value = "", $compare_operator = "" )
-	 * @method post_title() $builder->post_title( $value = "", $compare_operator = "" )
-	 * @method post_name() $builder->post_name( $value = "", $compare_operator = "" )
-	 * @method post_content() $builder->post_content( $value = "", $compare_operator = "" )
-	 * @method post_terms() $builder->post_terms( $value = "", $compare_operator = "" )
-	 * @method screen_id() $builder->screen_id( $value = "", $compare_operator = "" )
-	 * @method did_action() $builder->did_action( $value = "", $compare_operator = "" )
-	 * @method has_action() $builder->has_action( $value = "", $compare_operator = "" )
-	 * @method has_filter() $builder->has_filter( $value = "", $compare_operator = "" )
+	 * @method is_admin( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_ajax( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_cron( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_frontend( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_ajax_action( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_404( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_date( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_year( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_month( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_day( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_time( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_new_day( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_multi_author( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method comments_open( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_post_type_hierarchical( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_post_type_archive( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_author( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_network_admin( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_archive( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_search( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_attachment( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_front_page( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_home( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_single( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_single_page( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_singular_page( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_sticky( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_page( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_paged( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_page_template( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_category( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_tag( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method has_tag( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method is_tax( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method has_term( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method user_id( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method user_can( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method user_name( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method user_meta( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method user_logged_in( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method user_role( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method post_id( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method post_type( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method post_title( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method post_name( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method post_content( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method post_terms( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method screen_id( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method did_action( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method has_action( $value = "", $compare_operator = "", $extra_argument = '' )
+	 * @method has_filter( $value = "", $compare_operator = "", $extra_argument = '' )
 	 */
 	class Builder implements \JsonSerializable, \ArrayAccess {
 		/**
@@ -119,6 +119,12 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Builder' ) 
 			return WP_Conditional_Logic::run( $this->jsonSerialize() );
 		}
 
+		/**
+		 * @param $name
+		 * @param $arguments
+		 *
+		 * @return mixed
+		 */
 		public function __call( $name, $arguments ) {
 			$arg = array_merge( array( $name ), $arguments );
 			return call_user_func_array( array( &$this, 'rule' ), $arg );
@@ -167,17 +173,19 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Builder' ) 
 
 		/**
 		 * @param        $rule
-		 * @param        $value
+		 * @param bool   $value
 		 * @param string $compare
+		 * @param array  $arguments Additional Arguments.
 		 *
 		 * @return $this
 		 */
-		public function rule( $rule, $value = true, $compare = '=' ) {
+		public function rule( $rule, $value = true, $compare = '=', $arguments = array() ) {
 			$this->rules[] = array(
-				'id'       => $rule,
-				'field'    => $rule,
-				'value'    => $value,
-				'operator' => $compare,
+				'id'              => $rule,
+				'field'           => $rule,
+				'value'           => $value,
+				'operator'        => $compare,
+				'extra_arguments' => $arguments,
 			);
 			return $this;
 		}

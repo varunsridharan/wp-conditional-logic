@@ -52,7 +52,9 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\U
 		 * @return bool|mixed
 		 */
 		public function user_meta() {
-			$meta = get_user_meta( get_current_user_id(), $this->get_meta_key(), true );
+			$arguments = $this->rule->arguments();
+			$key       = ( ! is_array( $arguments ) ) ? $arguments : false;
+			$meta      = get_user_meta( get_current_user_id(), $key, true );
 			return ( ! empty( $meta ) ) ? $meta : false;
 		}
 
