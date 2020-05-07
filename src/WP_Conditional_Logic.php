@@ -12,13 +12,7 @@
 
 namespace Varunsridharan\WordPress;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
-require_once __DIR__ . '/class-builder.php';
-require_once __DIR__ . '/class-validators.php';
-require_once __DIR__ . '/rules/class-group.php';
-require_once __DIR__ . '/rules/class-rule.php';
+defined( 'ABSPATH' ) || exit;
 
 use Varunsridharan\WordPress\WP_Conditional_Logic\Builder;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Group;

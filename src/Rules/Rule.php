@@ -12,9 +12,7 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic\Rules;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
+defined( 'ABSPATH' ) || exit;
 
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validators;
 

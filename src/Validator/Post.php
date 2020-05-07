@@ -14,9 +14,8 @@ namespace Varunsridharan\WordPress\WP_Conditional_Logic\Validator;
 
 use WP_Post;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
+defined( 'ABSPATH' ) || exit;
+
 if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Post' ) ) {
 	/**
 	 * Trait Post

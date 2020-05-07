@@ -12,9 +12,8 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic\Validator;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
+defined( 'ABSPATH' ) || exit;
+
 if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Theme' ) ) {
 	/**
 	 * Trait Theme

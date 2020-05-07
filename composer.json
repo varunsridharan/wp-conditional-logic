@@ -13,9 +13,9 @@
   "keywords"    : [ ],
   "autoload"    : {
 	"psr-4" : {
-	  "Varunsridharan\\WordPress\\" : "./src"
+	  "Varunsridharan\\WordPress\\WP_Conditional_Logic\\" : "src/"
 	},
-	"files" : [ "src/functions.php" ]
+	"files" : [ "src/functions.php", "src/WP_Conditional_Logic.php" ]
   },
   "authors"     : [
 	{

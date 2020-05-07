@@ -8,17 +8,7 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
-
-require_once __DIR__ . '/validator/trait-users.php';
-require_once __DIR__ . '/validator/trait-request.php';
-require_once __DIR__ . '/validator/trait-hooks.php';
-require_once __DIR__ . '/validator/trait-admin.php';
-require_once __DIR__ . '/validator/trait-post.php';
-require_once __DIR__ . '/validator/trait-theme.php';
-require_once __DIR__ . '/class-compare.php';
+defined( 'ABSPATH' ) || exit;
 
 use Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Requests;

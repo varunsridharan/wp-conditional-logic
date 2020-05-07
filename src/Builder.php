@@ -10,9 +10,7 @@ namespace Varunsridharan\WordPress\WP_Conditional_Logic;
 
 use Varunsridharan\WordPress\WP_Conditional_Logic;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Builder' ) ) {
 	/**
