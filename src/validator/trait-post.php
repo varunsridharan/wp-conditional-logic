@@ -12,6 +12,8 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic\Validator;
 
+use WP_Post;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
@@ -58,7 +60,7 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\P
 		 */
 		public function post_name() {
 			global $post;
-			return ( $post instanceof \WP_Post ) ? $post->post_name : false;
+			return ( $post instanceof WP_Post ) ? $post->post_name : false;
 		}
 
 		/**

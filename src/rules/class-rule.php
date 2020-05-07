@@ -30,37 +30,37 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule'
 		 * @var null
 		 * @access
 		 */
-		private $id = null;
+		private $id;
 
 		/**
 		 * @var null
 		 * @access
 		 */
-		private $field = null;
+		private $field;
 
 		/**
 		 * @var null
 		 * @access
 		 */
-		private $type = null;
+		private $type;
 
 		/**
 		 * @var null
 		 * @access
 		 */
-		private $input = null;
+		private $input;
 
 		/**
 		 * @var null
 		 * @access
 		 */
-		private $operator = null;
+		private $operator;
 
 		/**
 		 * @var null
 		 * @access
 		 */
-		private $value = null;
+		private $value;
 
 		/**
 		 * Stores Additonal Arguments.
@@ -68,7 +68,7 @@ if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule'
 		 * @var null
 		 * @access
 		 */
-		private $arguments = null;
+		private $arguments;
 
 		/**
 		 * Rule constructor.

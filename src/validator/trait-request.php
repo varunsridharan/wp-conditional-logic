@@ -43,8 +43,7 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		 * @return bool
 		 */
 		public function is_frontend() {
-			$status = ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
-			return $status;
+			return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
 		}
 
 		/**
@@ -52,8 +51,7 @@ if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\R
 		 */
 		public function is_ajax_action() {
 			if ( defined( 'DOING_AJAX' ) && true === DOING_AJAX ) {
-				$action = ( isset( $_REQUEST['action'] ) && ! empty( $_REQUEST['action'] ) );
-				return $action;
+				return ( isset( $_REQUEST['action'] ) && ! empty( $_REQUEST['action'] ) );
 			}
 			return false;
 		}
