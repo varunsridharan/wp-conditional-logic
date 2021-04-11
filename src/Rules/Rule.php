@@ -12,8 +12,6 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic\Rules;
 
-defined( 'ABSPATH' ) || exit;
-
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validators;
 
 if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule' ) ) {

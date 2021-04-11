@@ -8,8 +8,6 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic;
 
-defined( 'ABSPATH' ) || exit;
-
 use Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Rule;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Requests;
 use Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin;

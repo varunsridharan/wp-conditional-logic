@@ -1,7 +1,4 @@
 <?php
-
-defined( 'ABSPATH' ) || exit;
-
 if ( ! function_exists( 'wp_conditional_logic' ) ) {
 	/**
 	 * Validates Given Rules Set and return true or false.

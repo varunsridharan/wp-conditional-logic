@@ -12,8 +12,6 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic\Validator;
 
-defined( 'ABSPATH' ) || exit;
-
 if ( ! trait_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Validator\Admin' ) ) {
 	/**
 	 * Trait Admin

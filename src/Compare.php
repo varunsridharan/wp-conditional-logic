@@ -8,8 +8,6 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic;
 
-defined( 'ABSPATH' ) || exit;
-
 if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Compare' ) ) {
 	/**
 	 * Class Compare

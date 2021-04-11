@@ -12,8 +12,6 @@
 
 namespace Varunsridharan\WordPress\WP_Conditional_Logic\Rules;
 
-defined( 'ABSPATH' ) || exit;
-
 if ( ! class_exists( '\Varunsridharan\WordPress\WP_Conditional_Logic\Rules\Group' ) ) {
 	/**
 	 * Class WP_Conditional_Logic
